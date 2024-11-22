@@ -1,20 +1,4 @@
-document.getElementById('save-button').addEventListener('click', function() {
-    const noteInput = document.getElementById('note-input');
-    const notesList = document.getElementById('notes-list');
-  
-    if (noteInput.value.trim() === "") {
-      alert("Vui lòng nhập nội dung ghi chú!");
-      return;
-    }
-  
-    const note = document.createElement('div');
-    note.className = 'note';
-    note.textContent = noteInput.value;
-  
-    notesList.appendChild(note);
-    noteInput.value = ""; // Xóa nội dung trong textarea sau khi lưu
-
-    // Hàm hiển thị ghi chú từ LocalStorage
+// Hàm hiển thị ghi chú từ LocalStorage
 function displayNotes() {
   const notesList = document.getElementById('notes-list');
   notesList.innerHTML = ""; // Xóa nội dung cũ
@@ -55,20 +39,4 @@ function saveNote() {
   displayNotes(); // Cập nhật danh sách
 }
 
-// Hàm xóa ghi chú
-function deleteNote(index) {
-  const notes = JSON.parse(localStorage.getItem('notes')) || [];
-  notes.splice(index, 1); // Xóa ghi chú
-  localStorage.setItem('notes', JSON.stringify(notes)); // Cập nhật LocalStorage
-
-  displayNotes(); // Cập nhật danh sách
-}
-
-// Sự kiện khi nhấn nút Lưu
-document.getElementById('save-button').addEventListener('click', saveNote);
-
-// Hiển thị ghi chú khi tải trang
-displayNotes();
-
-  });
-  
+// Hàm xóa ghi
